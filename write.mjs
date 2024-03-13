@@ -6,8 +6,16 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
+let data;
 rl.on('line', (line) => {
+  data = line;
+
   console.log(`writed ${line}`)
+
+  fs.writeFileSync('./data.txt', data)
+  
+  const fileData = fs.readFileSync('./data.txt', 'utf8')
+  console.log(fileData);                                
   
   rl.close()
 })
@@ -18,7 +26,7 @@ rl.on('line', (line) => {
 
 const point = process.argv[2];
 
-fs.writeFileSync('./point.txt', point)
 
-const data = fs.readFileSync('./point.txt', 'utf8')
-console.log(point);
+
+
+
